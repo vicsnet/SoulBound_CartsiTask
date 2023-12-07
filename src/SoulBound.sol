@@ -35,7 +35,7 @@ function setURI(string memory _uri) external{
 @notice function to mint token
  */
 function mintToken() public{
-        require(myToken[msg.sender] >0, 'GO_AND_CLAIM_TOKEN');
+        require(myToken[msg.sender] == 0, 'GO_AND_CLAIM_TOKEN');
         uint256 id = myToken[msg.sender];
         uint256 value;
          if (id % 2 == 0) {
@@ -64,8 +64,8 @@ function mintToken() public{
 *@notice function to transfer token
 */
   function transfer(address to) external  {
-        require(myToken[msg.sender] >0, 'GO_AND_CLAIM_TOKEN');
-        require(myToken[to]>0, 'NO_TOKEN_CLAIMED_BY_USER_YET');
+        require(myToken[msg.sender] == 0, 'GO_AND_CLAIM_TOKEN');
+        require(myToken[to] ==0, 'NO_TOKEN_CLAIMED_BY_USER_YET');
           uint256 id = myToken[msg.sender];
           require(id %2 == 0, 'YOU_CAN_NOT_TRANSFER');
           require(myToken[to] %2 == 0, 'YOU_CAN_NOT_TRANSFER_TO_THE_ADDRESS');
