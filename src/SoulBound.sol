@@ -62,6 +62,7 @@ function mintToken() public{
 
 /**
 *@notice function to transfer token
+* @dev only token with divisible ID by 2 can transfer Token
 */
   function transfer(address to) external  {
         require(myToken[msg.sender] == 0, 'GO_AND_CLAIM_TOKEN');
